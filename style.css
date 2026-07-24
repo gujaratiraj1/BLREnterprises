@@ -244,16 +244,16 @@ a {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .logo-icon {
-  width: 42px;
-  height: 42px;
+  width: 64px;
+  height: 64px;
 }
 
 .brand-subtext {
