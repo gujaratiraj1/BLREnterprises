@@ -164,57 +164,93 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ==========================================
-  // 6. Contact Form Validation & Submission
+  // 6. Contact Form Validation & Submission (Formspree)
   // ==========================================
   const quoteForm = document.getElementById('quote-form');
   const formStatus = document.getElementById('form-status');
 
+  // ⚠️  Replace YOUR_FORM_ID below with the ID from your Formspree dashboard
+  //     Sign up free at https://formspree.io → New Form → copy the form ID
+  //     Example: if Formspree gives you https://formspree.io/f/xpwzabcd  →  use 'xpwzabcd'
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
   if (quoteForm && formStatus) {
-    quoteForm.addEventListener('submit', (e) => {
+    quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = quoteForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
-      
+
+      // Gather input data
+      const name     = document.getElementById('form-name').value.trim();
+      const email    = document.getElementById('form-email').value.trim();
+      const phone    = document.getElementById('form-phone').value.trim();
+      const division = document.getElementById('form-division').value;
+      const message  = document.getElementById('form-message').value.trim();
+
+      // Client-side validation
+      if (!name || !email || !phone || !division || !message) {
+        formStatus.style.display = 'block';
+        formStatus.innerText = 'Please complete all required fields.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
       // Visual loading state
       submitBtn.disabled = true;
       submitBtn.innerText = 'Transmitting Query...';
       formStatus.className = 'form-status';
       formStatus.style.display = 'none';
 
-      // Gather input data
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const phone = document.getElementById('form-phone').value.trim();
-      const division = document.getElementById('form-division').value;
-      const message = document.getElementById('form-message').value.trim();
+      try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            division,
+            message,
+            _subject: `BLR Enterprises – New Quote Request from ${name}`,
+            _replyto: email
+          })
+        });
 
-      // Simple validations
-      if (!name || !email || !phone || !division || !message) {
-        formStatus.innerText = 'Please complete all required fields.';
-        formStatus.classList.add('error');
         submitBtn.disabled = false;
         submitBtn.innerText = originalText;
-        return;
+
+        if (response.ok) {
+          const txnId = `BLR-REQ-${Math.floor(100000 + Math.random() * 900000)}`;
+          formStatus.innerHTML = `
+            <strong>✔ Inquiry Registered Successfully.</strong><br>
+            Thank you, <strong>${name}</strong>. Your quote request for the 
+            <strong>${division.toUpperCase()}</strong> division has been received by our team. 
+            A representative will reach you at <em>${email}</em> or <em>${phone}</em>.<br>
+            <small>Reference ID: ${txnId}</small>
+          `;
+          formStatus.className = 'form-status success';
+          formStatus.style.display = 'block';
+          quoteForm.reset();
+        } else {
+          // Formspree returns error details in JSON
+          const data = await response.json();
+          const errMsg = data.errors ? data.errors.map(err => err.message).join(', ') : 'Submission failed. Please try again.';
+          formStatus.innerText = errMsg;
+          formStatus.className = 'form-status error';
+          formStatus.style.display = 'block';
+        }
+
+      } catch (networkError) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalText;
+        formStatus.innerText = 'Network error. Please check your connection and try again.';
+        formStatus.className = 'form-status error';
+        formStatus.style.display = 'block';
       }
-
-      // Simulate B2B API call (2 seconds latency)
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerText = originalText;
-        
-        // Show success confirmation referencing official credentials for compliance trust
-        formStatus.innerHTML = `
-          <strong>Success! Inquiry Registered.</strong><br>
-          Thank you ${name}. Your quote request for the <strong>${division.toUpperCase()}</strong> division has been logged into our customer queue. 
-          A representative will email you at <em>${email}</em> or call you at <em>${phone}</em>. <br>
-          <small>Transaction ID: BLR-REQ-${Math.floor(100000 + Math.random() * 900000)}</small>
-        `;
-        formStatus.classList.add('success');
-        
-        // Clear inputs
-        quoteForm.reset();
-      }, 1800);
     });
   }
 
