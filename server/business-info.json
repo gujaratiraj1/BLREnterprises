@@ -1,6 +1,9 @@
 {
   "name": "BLR Enterprises",
   "location": "Bengaluru, Karnataka, India",
+  "registrations": {
+    "treds": "BLR Enterprises is TReDS registered, as confirmed by the owner. Contact the team for registration details. No platform name, registration ID, registration date or financing terms have been provided."
+  },
   "services": {
     "logistics": "Road freight transport and logistics inquiries across India.",
     "construction": "Residential, commercial and industrial construction inquiries, including turnkey construction and project management.",
