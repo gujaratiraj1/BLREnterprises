@@ -1,0 +1,15 @@
+.service-assistant[hidden] { display: none; }
+.service-assistant { border-top: 1px solid var(--border-color, #475569); }
+.assistant-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.assistant-intro h2 { margin: .75rem 0; }
+.assistant-intro p { max-width: 38rem; margin-bottom: 1rem; }
+.assistant-card { padding: 1.5rem; border-radius: 1rem; }
+.assistant-card label { display: block; font-weight: 600; margin-bottom: .65rem; }
+.assistant-card textarea { width: 100%; box-sizing: border-box; min-height: 7rem; padding: .9rem; border: 1px solid #64748b; border-radius: .5rem; background: transparent; color: inherit; font: inherit; resize: vertical; }
+.assistant-note { margin: .65rem 0 1rem; font-size: .875rem; }
+.assistant-reply { white-space: pre-wrap; overflow-wrap: anywhere; margin: 1.2rem 0; line-height: 1.65; }
+.assistant-card :focus-visible { outline: 3px solid #60a5fa; outline-offset: 4px; }
+.assistant-card button:disabled { opacity: .65; cursor: wait; }
+.assistant-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+@media (max-width: 768px) { .assistant-layout { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

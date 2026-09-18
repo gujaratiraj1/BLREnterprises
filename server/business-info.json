@@ -1,0 +1,24 @@
+{
+  "name": "BLR Enterprises",
+  "location": "Bengaluru, Karnataka, India",
+  "registrations": {
+    "treds": "The owner confirms BLR Enterprises is TReDS registered. The supplied application and supplier agreement identify the platform as M1xchange. The agreement is dated 17 September 2026; this is not an account activation date or proof of approved account status. Contact the team for registration details. No platform account ID or confirmed activation date has been provided.",
+    "udyam": "UDYAM-KR-03-0731682. The supplied Udyam details list major activity Trading and date of Udyam registration 22 July 2026; 23 July 2026 is the classification date."
+  },
+  "services": {
+    "logistics": "Road freight transport and logistics inquiries across India.",
+    "construction": "Residential, commercial and industrial construction inquiries, including turnkey construction and project management.",
+    "procurement": "BLR Enterprises also undertakes GeM portal and procurement bids. Visitors can share bid opportunities for the team to review requirements and confirm scope and next steps."
+  },
+  "inquiryDetails": {
+    "logistics": ["pickup and delivery locations", "cargo type", "weight and dimensions", "preferred shipping date"],
+    "construction": ["project location", "building type and scope", "approximate size", "preferred timeline"],
+    "procurement": ["GeM bid number or tender reference", "opportunity link", "goods or services required and quantities", "delivery or project location", "submission deadline", "expected delivery or completion timeline"]
+  },
+  "contact": {
+    "phone": "+91 9008064643",
+    "email": "blrenterprise2026@gmail.com"
+  },
+  "limitations": "Staff must confirm pricing, service availability, schedules and formal quotations. No live shipment tracking or booking system is connected.",
+  "source": "Existing website at commit 8ceefe5803b71a8019f56587e4265a4a9fdc99b9, plus owner-confirmed GeM portal and procurement bid services on 2026-09-18; owner review required before launch."
+}
