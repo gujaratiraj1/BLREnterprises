@@ -17,6 +17,7 @@
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assistant.css">
 </head>
 
 <body class="dark-theme">
@@ -515,6 +516,31 @@
     </div>
   </section>
 
+  <section id="service-assistant" class="section service-assistant" hidden aria-labelledby="assistant-title">
+    <div class="container assistant-layout">
+      <div class="assistant-intro">
+        <span class="section-tagline">A little help getting started</span>
+        <h2 id="assistant-title">Tell us what you’re planning.</h2>
+        <p>Explore our logistics and construction services, or find out which details to include in your inquiry.</p>
+        <p>Our AI assistant provides general guidance. Our team confirms availability, schedules and formal quotations.</p>
+      </div>
+      <div class="assistant-card bg-glass">
+        <form id="assistant-form">
+          <label for="assistant-question">How can we help?</label>
+          <textarea id="assistant-question" required maxlength="2000" rows="4" aria-describedby="assistant-note"
+            placeholder="What details do you need for a freight quote?"></textarea>
+          <p id="assistant-note" class="assistant-note">Each question is answered independently and sent to OpenAI for processing. Please leave out contact details and sensitive information.</p>
+          <button id="assistant-submit" class="btn btn-primary" type="submit">Ask about our services</button>
+        </form>
+        <div id="assistant-reply" class="assistant-reply" role="status" aria-live="polite" aria-atomic="true"></div>
+        <div class="assistant-actions">
+          <button id="assistant-handoff" class="btn btn-outline" type="button">Add my question to an inquiry</button>
+          <a href="tel:+919008064643" class="btn btn-outline">Call our team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Interactive Contact Section -->
   <section id="contact" class="section contact-section bg-alt">
     <div class="container">
@@ -557,7 +583,7 @@
               </div>
               <div>
                 <span class="info-label">Email Channels</span>
-                <span class="info-value">info@blrenterprises.com</span>
+                <span class="info-value">blrenterprise2026@gmail.com</span>
               </div>
             </a>
 
@@ -711,7 +737,9 @@
   </footer>
 
   <!-- Core Script File -->
+  <script src="site-config.js"></script>
   <script src="script.js"></script>
+  <script src="assistant.js"></script>
 </body>
 
 </html>

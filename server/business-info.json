@@ -1,0 +1,18 @@
+{
+  "name": "BLR Enterprises",
+  "location": "Bengaluru, Karnataka, India",
+  "services": {
+    "logistics": "Road freight transport and logistics inquiries across India.",
+    "construction": "Residential, commercial and industrial construction inquiries, including turnkey construction and project management."
+  },
+  "inquiryDetails": {
+    "logistics": ["pickup and delivery locations", "cargo type", "weight and dimensions", "preferred shipping date"],
+    "construction": ["project location", "building type and scope", "approximate size", "preferred timeline"]
+  },
+  "contact": {
+    "phone": "+91 9008064643",
+    "email": "blrenterprise2026@gmail.com"
+  },
+  "limitations": "Staff must confirm pricing, service availability, schedules and formal quotations. No live shipment tracking or booking system is connected.",
+  "source": "Existing website at commit 8ceefe5803b71a8019f56587e4265a4a9fdc99b9; owner review required before launch."
+}

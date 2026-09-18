@@ -169,14 +169,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const quoteForm = document.getElementById('quote-form');
   const formStatus = document.getElementById('form-status');
 
-  // ⚠️  Replace YOUR_FORM_ID below with the ID from your Formspree dashboard
-  //     Sign up free at https://formspree.io → New Form → copy the form ID
-  //     Example: if Formspree gives you https://formspree.io/f/xpwzabcd  →  use 'xpwzabcd'
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  const formId = window.BLR_CONFIG?.formspreeFormId || '';
+  const FORMSPREE_ENDPOINT = /^[a-zA-Z0-9]+$/.test(formId)
+    ? `https://formspree.io/f/${formId}` : '';
 
   if (quoteForm && formStatus) {
+    if (!FORMSPREE_ENDPOINT) {
+      formStatus.textContent = 'Online submission is not configured yet. Please call +91 9008064643 or email blrenterprise2026@gmail.com with your inquiry.';
+      formStatus.className = 'form-status';
+      formStatus.style.display = 'block';
+      quoteForm.querySelector('button[type="submit"]').disabled = true;
+    }
     quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!FORMSPREE_ENDPOINT || !quoteForm.reportValidity()) return;
 
       const submitBtn = quoteForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
@@ -224,14 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = originalText;
 
         if (response.ok) {
-          const txnId = `BLR-REQ-${Math.floor(100000 + Math.random() * 900000)}`;
-          formStatus.innerHTML = `
-            <strong>✔ Inquiry Registered Successfully.</strong><br>
-            Thank you, <strong>${name}</strong>. Your quote request for the 
-            <strong>${division.toUpperCase()}</strong> division has been received by our team. 
-            A representative will reach you at <em>${email}</em> or <em>${phone}</em>.<br>
-            <small>Reference ID: ${txnId}</small>
-          `;
+          formStatus.textContent = `Thank you, ${name}. Your ${division} inquiry has been submitted. Our team will contact you using the details provided.`;
           formStatus.className = 'form-status success';
           formStatus.style.display = 'block';
           quoteForm.reset();
