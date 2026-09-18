@@ -52,8 +52,9 @@ Find the site in GitHub Settings → Pages to confirm the public frontend URL. R
 your hosting dashboards or billing records for a backend; this repository previously
 contained no backend deployment. If none exists, provision a Node.js service.
 Sign in to Formspree, open the BLR form and copy the ID from its integration endpoint.
-Until an ID is configured the site disables online submission and displays phone/email
-alternatives. Verify delivery using a test inquiry after configuration. The visible
+Until an ID is configured the form prepares an email draft for the visitor to review
+and send in their own email app; it does not send automatically or claim delivery.
+Phone/email contact links remain available. Verify delivery using a test inquiry after configuration. The visible
 contact email now matches the email link already in the original site.
 
 ## Assistant behavior and limits

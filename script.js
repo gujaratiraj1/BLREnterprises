@@ -7,12 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
   function toggleMenu() {
-    mobileToggle.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.classList.toggle('overflow-hidden');
+    const open = !mobileMenu.classList.contains('active');
+    mobileToggle.classList.toggle('active', open);
+    mobileMenu.classList.toggle('active', open);
+    document.body.classList.toggle('overflow-hidden', open);
+    mobileToggle.setAttribute('aria-expanded', String(open));
+    mobileToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    mobileMenu.inert = !open;
+    mobileMenu.setAttribute('aria-hidden', String(!open));
   }
 
   if (mobileToggle && mobileMenu) {
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        toggleMenu();
+        mobileToggle.focus();
+      }
+    });
+    window.matchMedia('(min-width: 992px)').addEventListener('change', event => {
+      if (event.matches && mobileMenu.classList.contains('active')) toggleMenu();
+    });
     mobileToggle.addEventListener('click', toggleMenu);
     
     mobileLinks.forEach(link => {
@@ -33,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function switchTab(tabId) {
     // Update tab buttons
     tabButtons.forEach(btn => {
+      const selected = btn.getAttribute('data-tab') === tabId;
+      btn.setAttribute('aria-selected', String(selected));
+      btn.tabIndex = selected ? 0 : -1;
       if (btn.getAttribute('data-tab') === tabId) {
         btn.classList.add('active');
       } else {
@@ -51,6 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   tabButtons.forEach(btn => {
+    btn.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const items = [...tabButtons];
+      let index = items.indexOf(btn);
+      if (event.key === 'Home') index = 0;
+      else if (event.key === 'End') index = items.length - 1;
+      else index = (index + (event.key === 'ArrowRight' ? 1 : -1) + items.length) % items.length;
+      switchTab(items[index].dataset.tab);
+      items[index].focus();
+    });
     btn.addEventListener('click', () => {
       const tabId = btn.getAttribute('data-tab');
       switchTab(tabId);
@@ -79,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   
   // Set default theme from localStorage or default to dark
-  const storedTheme = localStorage.getItem('blr-theme') || 'dark';
+  let storedTheme = 'dark';
+  try { storedTheme = localStorage.getItem('blr-theme') || 'dark'; } catch { /* Storage may be unavailable. */ }
   if (storedTheme === 'light') {
     document.body.classList.remove('dark-theme');
     document.body.classList.add('light-theme');
@@ -93,11 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (document.body.classList.contains('dark-theme')) {
         document.body.classList.remove('dark-theme');
         document.body.classList.add('light-theme');
-        localStorage.setItem('blr-theme', 'light');
+        try { localStorage.setItem('blr-theme', 'light'); } catch { /* Keep the current theme for this visit. */ }
       } else {
         document.body.classList.remove('light-theme');
         document.body.classList.add('dark-theme');
-        localStorage.setItem('blr-theme', 'dark');
+        try { localStorage.setItem('blr-theme', 'dark'); } catch { /* Keep the current theme for this visit. */ }
       }
     });
   }
@@ -110,6 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function startCounters() {
     statNumbers.forEach(stat => {
       const target = parseInt(stat.getAttribute('data-target'), 10);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        stat.innerText = target;
+        return;
+      }
       const count = +stat.innerText;
       
       // Speed factor
@@ -174,18 +207,27 @@ document.addEventListener('DOMContentLoaded', () => {
     ? `https://formspree.io/f/${formId}` : '';
 
   if (quoteForm && formStatus) {
+    const emailDraft = document.getElementById('email-draft');
+    document.querySelectorAll('[data-inquiry]').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('form-division').value = link.dataset.inquiry;
+        emailDraft.hidden = true;
+      });
+    });
+    quoteForm.addEventListener('input', () => { emailDraft.hidden = true; });
     if (!FORMSPREE_ENDPOINT) {
-      formStatus.textContent = 'Online submission is not configured yet. Please call +91 9008064643 or email blrenterprise2026@gmail.com with your inquiry.';
+      formStatus.textContent = 'Fill in your details to prepare an email inquiry. You can review and send it from your email app.';
       formStatus.className = 'form-status';
       formStatus.style.display = 'block';
-      quoteForm.querySelector('button[type="submit"]').disabled = true;
+      quoteForm.querySelector('button[type="submit"]').textContent = 'Prepare email inquiry';
     }
     quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (!FORMSPREE_ENDPOINT || !quoteForm.reportValidity()) return;
+      if (!quoteForm.reportValidity()) return;
 
       const submitBtn = quoteForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
+      if (submitBtn.disabled) return;
 
       // Gather input data
       const name     = document.getElementById('form-name').value.trim();
@@ -199,6 +241,17 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.style.display = 'block';
         formStatus.innerText = 'Please complete all required fields.';
         formStatus.className = 'form-status error';
+        return;
+      }
+
+      if (!FORMSPREE_ENDPOINT) {
+        const subject = `BLR Enterprises – ${division} inquiry`;
+        const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nDivision: ${division}\n\n${message}`;
+        emailDraft.href = `mailto:blrenterprise2026@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        emailDraft.hidden = false;
+        formStatus.textContent = 'Your email draft is ready. Open it below, then review and send it in your email app. Nothing has been sent yet.';
+        formStatus.style.display = 'block';
+        emailDraft.focus();
         return;
       }
 
