@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLR Enterprises | Design • Engineer • Deliver</title>
   <meta name="description"
-    content="BLR Enterprises is a premier Bengaluru-based provider of Infrastructure Construction and Freight Logistics services. Certified GST & MSME Udyam registered company.">
+    content="BLR Enterprises in Bengaluru offers road logistics, building construction, and GeM portal and procurement bid services. Contact our team to discuss your requirements.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,8 +120,8 @@
           <span class="gradient-text">Our commitment.</span>
         </h1>
         <p class="hero-subtitle">
-          Road freight and construction services, with one team to help you get started.
-          Tell us what needs to move — or what you’re ready to build.
+          Road freight, construction, and GeM portal procurement bids, with one team to help you get started.
+          Tell us what needs to move, what you’re ready to build, or which bid you have in mind.
         </p>
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary btn-lg">Discuss your requirements <span aria-hidden="true">↗</span></a>
@@ -163,6 +163,7 @@
           </p>
           <a href="#services" class="card-link" data-target-tab="construction">Learn More &rarr;</a>
         </div>
+        <a href="#services" class="procurement-hero-link" data-target-tab="procurement"><span><small>03 / PROCUREMENT</small>GeM Portal &amp; Procurement Bids</span><span aria-hidden="true">↗</span></a>
       </div>
     </div>
 
@@ -207,8 +208,8 @@
             engineering excellence and seamless supply chain dispatch.
           </p>
           <p>
-            Whether you are planning a freight dispatch or a construction project, we help you outline
-            the requirements and discuss the next steps with the right team.
+            Whether you are planning a freight dispatch, a construction project, or a GeM portal or procurement bid,
+            we help you outline the requirements and discuss the next steps with the right team.
           </p>
 
           <div class="values-list">
@@ -282,7 +283,7 @@
         <span class="section-tagline">What We Do</span>
         <h2>Our Core Divisions</h2>
         <div class="accent-line"></div>
-        <p class="section-subtitle">We operate two specialized business units matching our industrial certifications.
+        <p class="section-subtitle">Explore our road logistics, construction, and GeM portal and procurement bid services.
         </p>
       </div>
 
@@ -303,10 +304,34 @@
           </svg>
           Building Construction
         </button>
+        <button class="tab-btn" data-tab="procurement" id="procurement-tab" role="tab" aria-selected="false" aria-controls="procurement-content" tabindex="-1">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3H5v18h14V3h-3M9 2h6v4H9zM8 11h8M8 15h8" /></svg>
+          GeM &amp; Procurement Bids
+        </button>
       </div>
 
       <!-- Services Content Cards -->
       <div class="tab-contents">
+        <div class="tab-content" id="procurement-content" role="tabpanel" aria-labelledby="procurement-tab" tabindex="0">
+          <div class="grid grid-2-col service-card-grid procurement-service">
+            <div class="procurement-intro">
+              <span class="section-tagline">GeM portal &amp; procurement</span>
+              <h3>Your next bid starts with a conversation.</h3>
+              <p>BLR Enterprises also undertakes GeM portal and procurement bids. Share the opportunity with our team to discuss the requirements and proposed scope.</p>
+              <a href="#contact" class="btn btn-primary" data-inquiry="procurement">Discuss a procurement bid ↗</a>
+            </div>
+            <div class="service-text-pane">
+              <h3>Share your bid requirements</h3>
+              <p class="service-lead">For GeM portal enquiries and other procurement bid opportunities, include:</p>
+              <ul class="procurement-details">
+                <li><strong>Bid reference</strong><span>GeM bid number, tender reference, or an opportunity link.</span></li>
+                <li><strong>Scope of work</strong><span>Required goods or services, quantities, and delivery or project location.</span></li>
+                <li><strong>Key dates</strong><span>Submission deadline and expected delivery or completion timeline.</span></li>
+              </ul>
+              <p class="inquiry-note">Our team will confirm the scope and next steps after reviewing the bid requirements.</p>
+            </div>
+          </div>
+        </div>
         <!-- Logistics Division Content (Primary) -->
         <div class="tab-content active" id="logistics-content" role="tabpanel" aria-labelledby="logistics-tab" tabindex="0">
           <div class="grid grid-2-col service-card-grid">
@@ -525,7 +550,7 @@
       <div class="assistant-intro">
         <span class="section-tagline">A little help getting started</span>
         <h2 id="assistant-title">Tell us what you’re planning.</h2>
-        <p>Explore our logistics and construction services, or find out which details to include in your inquiry.</p>
+        <p>Explore our logistics, construction, and procurement bid services, or find out which details to include in your inquiry.</p>
         <p>Our AI assistant provides general guidance. Our team confirms availability, schedules and formal quotations.</p>
       </div>
       <div class="assistant-card bg-glass">
@@ -552,8 +577,7 @@
         <span class="section-tagline">Get In Touch</span>
         <h2>Request a Commercial Quote</h2>
         <div class="accent-line"></div>
-        <p class="section-subtitle">Contact us today to discuss your next construction project or freight dispatch
-          schedule.</p>
+        <p class="section-subtitle">Discuss a freight dispatch, construction project, GeM portal enquiry, or procurement bid with our team.</p>
       </div>
 
       <div class="grid grid-2-col contact-grid">
@@ -650,6 +674,7 @@
                   <option value="" disabled selected>Choose a service...</option>
                   <option value="construction">Building Infrastructure & Construction (NIC 41001)</option>
                   <option value="logistics">Freight & Road Logistics (NIC 49231)</option>
+                  <option value="procurement">GeM Portal &amp; Procurement Bids</option>
                   <option value="both">Integrated Engineering + Logistics Contract</option>
                 </select>
               </div>
@@ -659,7 +684,7 @@
               <div class="form-group">
                 <label for="form-message">Project Description / Requirements *</label>
                 <textarea id="form-message" name="message" rows="5" required maxlength="1500"
-                  placeholder="Please elaborate on your project timelines, location, payload weight or dimensions..."></textarea>
+                  placeholder="Share your requirements, location and timeline. For procurement, include the bid reference and submission deadline."></textarea>
               </div>
             </div>
 
@@ -701,8 +726,7 @@
           </div>
           <p class="brand-tagline">Design • Engineer • Deliver</p>
           <p class="brand-summary">
-            Integrating robust architectural design and building construction execution alongside motorized cargo road
-            logistics management nationwide.
+            Road logistics, building construction, and GeM portal and procurement bid services from Bengaluru.
           </p>
         </div>
 
@@ -713,6 +737,7 @@
             <li><a href="#about">About Our Firm</a></li>
             <li><a href="#services" data-target-tab="construction">Construction Division</a></li>
             <li><a href="#services" data-target-tab="logistics">Road Logistics Division</a></li>
+            <li><a href="#services" data-target-tab="procurement">GeM &amp; Procurement Bids</a></li>
             <li><a href="#credentials">Corporate Registrations</a></li>
             <li><a href="#contact">Request Formal Quotation</a></li>
           </ul>
