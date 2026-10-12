@@ -1,0 +1,29 @@
+<svg viewBox="85 15 330 315" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nav-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6" />
+              <stop offset="100%" stop-color="#1d4ed8" />
+            </linearGradient>
+            <linearGradient id="nav-grey" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#94a3b8" />
+              <stop offset="100%" stop-color="#475569" />
+            </linearGradient>
+          </defs>
+          <polygon points="220,150 220,60 250,35 250,150" fill="url(#nav-blue)" />
+          <polygon points="245,35 245,150 250,150 250,35" fill="#1e3a8a" />
+          <rect x="190" y="110" width="25" height="70" fill="url(#nav-grey)" />
+          <rect x="270" y="120" width="30" height="60" fill="url(#nav-grey)" />
+          <path
+            d="M127,180 L195,180 C215,180 225,190 225,202 C225,215 215,222 195,224 C215,226 228,235 228,252 C228,268 215,278 190,278 L127,278 Z M157,203 L157,220 L185,220 C195,220 200,215 200,211 C200,207 195,203 185,203 Z M157,238 L157,256 L188,256 C198,256 203,251 203,247 C203,243 198,238 188,238 Z"
+            fill="url(#nav-blue)" />
+          <path d="M220,180 L245,180 L245,253 L308,253 L308,278 L220,278 Z" fill="url(#nav-grey)" />
+          <path
+            d="M253,180 L320,180 C340,180 355,190 355,212 C355,228 342,238 325,242 L362,278 L330,278 L298,245 L283,245 L283,278 L253,278 Z M283,203 L283,222 L315,222 C325,222 330,217 330,212 C330,207 325,203 315,203 Z"
+            fill="url(#nav-blue)" />
+          <path
+            d="M123,240 C95,260 100,295 160,305 C200,312 260,300 270,292 C230,302 180,300 150,292 C115,283 118,258 135,245 Z"
+            fill="url(#nav-blue)" />
+          <path
+            d="M363,225 C410,210 405,170 345,152 C310,142 250,152 240,160 C280,150 330,152 360,160 C395,169 392,194 375,208 Z"
+            fill="url(#nav-blue)" />
+        </svg>

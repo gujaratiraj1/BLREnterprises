@@ -6,6 +6,7 @@ import { askAstra } from './assistant.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const staticFiles = new Map([
+  ['/assets/blr-mark.svg', ['assets/blr-mark.svg', 'image/svg+xml']],
   ['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']],
   ['/style.css', ['style.css', 'text/css']], ['/assistant.css', ['assistant.css', 'text/css']],
   ['/script.js', ['script.js', 'text/javascript']], ['/assistant.js', ['assistant.js', 'text/javascript']],
