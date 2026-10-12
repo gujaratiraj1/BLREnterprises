@@ -8,12 +8,36 @@
   "services": {
     "logistics": "Road freight transport and logistics inquiries across India.",
     "construction": "Residential, commercial and industrial construction inquiries, including turnkey construction and project management.",
-    "procurement": "BLR Enterprises also undertakes GeM portal and procurement bids. Visitors can share bid opportunities for the team to review requirements and confirm scope and next steps."
+    "procurement": "BLR Enterprises also undertakes GeM portal and procurement bids. Visitors can share bid opportunities for the team to review requirements and confirm scope and next steps.",
+    "it": "Business websites, responsive web design, project portfolios, and technology consulting. The portfolio features personal website projects by Rajesh Gujarati originally made for friends: Manasyati Engineering, Sam's Interiors, Kardhan, Sam's Print Studio, UGRAM Buildtech. Do not present these as BLR client contracts."
   },
   "inquiryDetails": {
-    "logistics": ["pickup and delivery locations", "cargo type", "weight and dimensions", "preferred shipping date"],
-    "construction": ["project location", "building type and scope", "approximate size", "preferred timeline"],
-    "procurement": ["GeM bid number or tender reference", "opportunity link", "goods or services required and quantities", "delivery or project location", "submission deadline", "expected delivery or completion timeline"]
+    "logistics": [
+      "pickup and delivery locations",
+      "cargo type",
+      "weight and dimensions",
+      "preferred shipping date"
+    ],
+    "construction": [
+      "project location",
+      "building type and scope",
+      "approximate size",
+      "preferred timeline"
+    ],
+    "procurement": [
+      "GeM bid number or tender reference",
+      "opportunity link",
+      "goods or services required and quantities",
+      "delivery or project location",
+      "submission deadline",
+      "expected delivery or completion timeline"
+    ],
+    "it": [
+      "business and project goals",
+      "existing website or systems",
+      "required pages and features",
+      "preferred timeline"
+    ]
   },
   "contact": {
     "phone": "+91-9663990894",

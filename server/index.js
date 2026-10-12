@@ -9,7 +9,7 @@ const staticFiles = new Map([
   ['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']],
   ['/style.css', ['style.css', 'text/css']], ['/assistant.css', ['assistant.css', 'text/css']],
   ['/script.js', ['script.js', 'text/javascript']], ['/assistant.js', ['assistant.js', 'text/javascript']],
-  ...['hero-bg.png', 'logistics-service.png', 'construction-service.png'].map(name =>
+  ...['hero-bg.png', 'logistics-service.png', 'construction-service.png', 'projects/manasyati.png', 'projects/sams.png', 'projects/kardhan.png', 'projects/logo.png', 'projects/ugram.png'].map(name =>
     [`/assets/${name}`, [`assets/${name}`, 'image/png']])
 ]);
 
